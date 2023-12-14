@@ -9,6 +9,8 @@ RUN apt install -y \
     cmake \
     curl \
     file \
+    git \
+    g++ \
     gettext \
     m4 \
     wget
@@ -34,3 +36,11 @@ RUN apt install -y \
     libglew-dev \
     libudev-dev \
     libdbus-1-dev
+
+# Set up build environment
+WORKDIR /app
+
+RUN git config --global --add safe.directory /app
+
+# Builds OrcaSlicer at container runtime
+# CMD ["./BuildLinux.sh -u && ./BuildLinux.sh -dsir"]
